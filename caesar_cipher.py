@@ -17,7 +17,7 @@ def encrypt(plaintext, key):
                 ciphertext += letters[new_index]
     return ciphertext
 
-    def decrypt(ciphertext, key):
+def decrypt(ciphertext, key):
     plaintext = ''
     for letter in ciphertext:
         letter = letter.lower()
@@ -44,16 +44,16 @@ user_input = input('e/d').lower()
 print()
 
 if user_input == 'e':
-    print (ENCRPTION MODE SELECTED)
+    print ("ENCRPTION MODE SELECTED")
     print()
     key = int(input('Enter the key: '))
     text = input('Enter the text to encrypt:')
     ciphertext = encrypt(text,key)
     print(f'CIPHERTEXT: {ciphertext}')
 elif user_input == 'd':
-    print (DECRPTION MODE SELECTED)
+    print ("DECRPTION MODE SELECTED")
     print()
     key = int(input('Enter the key: '))
     text = input('Enter the text to decrypt:')
-    plaintext = encrypt(text,key)
+    plaintext = decrypt(text,key)
     print(f'PLAINTEXT: {plaintext}')
