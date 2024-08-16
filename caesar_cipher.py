@@ -40,7 +40,8 @@ print('*** PRODIGY CAESAR CIPHER')
 print()
 
 print('Do you want to encrypt or decrypt?')
-user_input = input('e/d').lower()
+user_input = input('e/d  ').lower()
+
 print()
 
 if user_input == 'e':
