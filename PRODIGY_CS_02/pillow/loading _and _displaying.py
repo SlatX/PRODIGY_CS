@@ -18,7 +18,6 @@ def encrypt_image(image_path, key):
 
         # Encrypt: Add the key value to each pixel and ensure it stays within [0, 255]
         encrypted_array = (image_array + key) 
-        print("{encrypted_array} + {image_array}")
         encrypted_array = np.where(encrypted_array > 255, encrypted_array - 255, encrypted_array)
         encrypted_image = Image.fromarray(encrypted_array.astype('uint8'))
         return encrypted_image
@@ -32,10 +31,8 @@ def decrypt_image(encrypted_image, key):
     try:
         # Decrypt: Subtract the key value from each pixel and ensure it stays within [0, 255]
         encrypted_array = np.array(encrypted_image)
-        print(encrypted_array)
         decrypted_array = (encrypted_array - key) 
         decrypted_array = np.where(decrypted_array < 0, decrypted_array + 255, decrypted_array)
-        print(decrypted_array)
         decrypted_image = Image.fromarray(decrypted_array.astype('uint8'))
         
         return decrypted_image
@@ -49,10 +46,9 @@ if __name__ == "__main__":
         # Encrypt the image
         try:
             encrypted_image = encrypt_image(image_path, key)
-            print("this is the first step")
             if encrypted_image:
                 encrypted_image.save(f"./saved-images/en_{generate_random_name()}.png")
-                print("Image encrypted and saved as 'encrypted_ape.png'.")
+                
         except Exception as e :
             print(f"this is the error{str(e)}")
             raise e
@@ -61,7 +57,7 @@ if __name__ == "__main__":
             decrypted_image = decrypt_image(encrypted_image, key)
             if decrypted_image:
                 decrypted_image.save(f"./saved-images/de_{generate_random_name()}.png")
-                print("Image decrypted and saved as 'decrypted_ape.png'.") 
+            
 
 runscript("./images/ape.jpg", 60) 
 runscript("./images/design.png", 70)
